@@ -87,6 +87,10 @@ class TranslatableDataObject extends DataExtension
     {
         parent::updateCMSFields($fields);
 
+        // give the user the possibility to break here
+        if (Config::inst()->get($this->owner->class, 'translatable_updatecmsfields', Config::FIRST_SET) === false)
+            return;
+
         if (!isset(self::$collectorCache[$this->owner->class])) {
             return;
         }

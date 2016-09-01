@@ -108,6 +108,18 @@ private static $translatable_fields = array(
 );
 ```
 
+
+If you provide the `updateCMSFields` extension hook in your DataObject and want to prevent the extension 
+from removing the translated fields you can achieve this with the `translatable_updatecmsfields` option like so:
+
+```yml
+MyDataObject:
+  extensions:
+    - TranslatableDataObject
+  translatable_updatecmsfields: false
+```
+
+
 ### Translations in the CMS
 
 Imagine you have a `TestimonialPage` that `has_many` testimonials and you're managing these Testimonials in a `GridField`.
